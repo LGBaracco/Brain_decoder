@@ -1,0 +1,6 @@
+.env
+.vscode
+data/
+environment.yml
+Manifest.toml
+Project.toml
