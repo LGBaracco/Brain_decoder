@@ -3,8 +3,6 @@ import os
 from pathlib import Path
 from PIL import Image
 from tqdm import tqdm
-# from nilearn import datasets
-# from nilearn import plotting
 import torch
 from transformers import CLIPModel, CLIPProcessor
 

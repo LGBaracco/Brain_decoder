@@ -6,3 +6,4 @@ Manifest.toml
 Project.toml
 __pycache__
 notebook.jl
+main.jl

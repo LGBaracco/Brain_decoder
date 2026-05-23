@@ -1,11 +1,12 @@
 import numpy as np
-from nilearn import datasets
-#from nilearn import plotting
 import torch
 from torch.utils.data import DataLoader
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from models import ridge_baseline, FMRIDataset, BrainEncoder, evaluate, infonce_loss
+from analysis import load_embeddings, rsa
+
+# TODO refactor into library, including different datasets, embeddings, and analysis tools
 
 
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -57,7 +58,7 @@ fmri_train, fmri_val, clip_train, clip_val = train_test_split(
 )
 
 # Ridge baseline
-# ridge = ridge_baseline(fmri_train, clip_train, fmri_val, clip_val)
+ridge = ridge_baseline(fmri_train, clip_train, fmri_val, clip_val)
 
 train_loader = DataLoader(
     FMRIDataset(fmri_train, clip_train),
@@ -81,3 +82,7 @@ print(f"Voxels: {n_voxels} | Device: {DEVICE}")
 print(f"Expected random-chance loss: {np.log(512):.3f}\n")
 
 train(encoder, train_loader, val_loader)
+
+fmri_embeddings, clip_embeddings = load_embeddings(encoder, val_loader, DEVICE)
+
+rsa(fmri_embeddings, clip_embeddings)
