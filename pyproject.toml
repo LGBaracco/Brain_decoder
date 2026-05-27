@@ -1,0 +1,25 @@
+[project]
+name = "brain-decoder"
+version = "0.1.0"
+description = "Contrastive brain-to-CLIP embedding decoding on NSD fMRI"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pillow>=10",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+    "torch>=2.2",
+    "transformers>=4.40",
+]
+
+[project.scripts]
+brain-decoder = "brain_decoder.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["brain_decoder"]

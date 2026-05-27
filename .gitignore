@@ -1,9 +1,11 @@
-.env
+.venv/
 .vscode
 data/
-environment.yml
 Manifest.toml
 Project.toml
-__pycache__
+__pycache__/
+*.pyc
 notebook.jl
 main.jl
+.cursor/
+.idea/
