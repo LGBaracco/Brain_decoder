@@ -1,12 +1,15 @@
 # Brain decoder
 
-Contrastive brain→CLIP decoding on NSD fMRI ([dataset](https://algonautsproject.com/2023/braindata.html), [CLIP ViT-L/14](https://huggingface.co/openai/clip-vit-large-patch14)).
+A fully customizable python library containing a neural decoding model using the embeddings from OpenAI's [clip-vit-large-patch14](https://huggingface.co/openai/clip-vit-large-patch14) and fMRI activations based on a [reduced version](https://algonautsproject.com/2023/braindata.html) of the Natural Scenes Dataset. 
+The decoder is self-supervised through Contrastive representation learning (infoNCE loss).
 
 ## Setup
 
+Install and initialize uv to install dependencies in a virtual environment automatically
+
 ```bash
-uv sync
-```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv sync```
 
 ## Quick start (CLI)
 
@@ -21,7 +24,7 @@ Run `uv run brain-decoder --help` for all flags (grouped: data, train, model, em
 
 ## Customize in Python
 
-Import what you need and change only the section you care about.
+Import what you need and change only the section you wish to modify.
 
 ```python
 from brain_decoder import (
@@ -131,3 +134,7 @@ uv run brain-decoder --plot --pca-components 30
 experiment_config(run_ridge=False)
 # or: uv run brain-decoder --train --no-ridge
 ```
+
+## Generative AI statement
+
+Cursor's agentic AI has been used to refactor the code into a reproducible library format.
